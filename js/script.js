@@ -14,7 +14,32 @@ project 1 - A Random Quote Generator
   Add the `year` property to at least one object in the array.
   Use console.log() to log your array of quotes to the console.
 ***/
+var quotes = [
+  {
+    quote: "God helps those that help themselves",
+    source: "Benjamin Franklin."
+  },
+  {
+    quote: "I came, I saw, I conquered.",
+    source: "Julius Caesar."
+  },
+  {
+    quote: "The journey of a thousand miles begins with one step.",
+    source: "Lao Tzu."
+  },
+  {
+    quote: "The only limit to our realization of tomorrow will be our doubts of today.",
+    source: "Franklin D. Roosevelt."
+  },
+  {
+    quote: "Living an experience, a particular fate, is accepting it fully.",
+    source: "Albert Camus."
+  }
+];
 
+quotes[4].citation = "'From the absurd to Revolt' book";
+quotes[3].year = 1945;
+console.log(quotes);
 
 
 
@@ -24,7 +49,10 @@ project 1 - A Random Quote Generator
    - Cse the random number to `return` a random quote object from the `quotes` array.
 ***/
 
-
+function getRandomQuote(){
+  var randomNumber = Math.floor(Math.random() * quotes.length)
+  return quotes[randomNumber];
+};
 
 
 /***
@@ -40,8 +68,20 @@ project 1 - A Random Quote Generator
    - Set the `innerHTML` of the `quote-box` div to the HTML string. 
 ***/
 
-
-
+function printQuote(){
+  var randomObject = getRandomQuote();
+  var stringHTML = "";
+  stringHTML = '<p class="quote">' + randomObject.quote + '</p>';
+  stringHTML = '<p class="source">' + randomObject.source;
+  if(randomObject.hasOwnProperty("citation")){
+    stringHTML = '<span class="citation">' + randomObject.citation + '</span>';
+  }
+  if(randomObject.hasOwnProperty("year")){
+    stringHTML = '<span class="year">' + randomObject.year + '</span>';
+  }
+  stringHTML = '</p>';
+  document.getElementById('quote-box').innerHTML = stringHTML;
+};
 
 /***
   When the "Show another quote" button is clicked, the event listener 
