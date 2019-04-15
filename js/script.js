@@ -48,7 +48,7 @@ var colorArray = ["#3A1F32", "#2F122C", "#DBB27F", "#C26E57", "#516986"];
 
 /***
   2 functions are created: getRandomQuote to get a random quote from the quoteArray and
-  getRandomColor to get a random color from the colorArray
+  getRandomColor to get a random color from the colorArray to change the body background color.
 ***/
 
 function getRandomQuote(){
@@ -60,18 +60,6 @@ function getRandomColor(){
   var randomColor = Math.floor(Math.random() * colorArray.length);
   return colorArray[randomColor];
 };
-/***
-  Create the `printQuote` function to: 
-   - Call the `getRandomQuote` function and assign it to a variable.
-   - Create a variable for the HTML string and set it equal to an empty string.
-   - Use the HTML template in the instructions or the markup in the index.html file, AND 
-     the random quote vairable to build your HTML string.
-   - Add the quote and source section to the HTML string.
-   - Use an if statement to check for the citation property before adding it to the HTML string.
-   - Use an if statement to check for the year property before adding it to the HTML string.
-   - Don't forget to close that final `p` tag.
-   - Set the `innerHTML` of the `quote-box` div to the HTML string. 
-***/
 
 function printQuote(){
   var randomObject = getRandomQuote();
