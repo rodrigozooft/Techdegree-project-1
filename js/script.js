@@ -81,7 +81,8 @@ function printQuote(){
   stringHTML += '</p>';
   // The final stringHTML is rendered in the view.
   document.getElementById('quote-box').innerHTML = stringHTML;
-  // In this part the color of the background is changed.
+  /* In this part the color of the background is changed. 
+   I got some inspiration from https://www.w3schools.com/jsref/prop_style_backgroundcolor.asp */
   var selectedColor = getRandomColor();
   console.log(selectedColor);
   document.body.style.backgroundColor = selectedColor;
