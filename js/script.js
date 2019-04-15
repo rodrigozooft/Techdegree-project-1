@@ -7,54 +7,59 @@ project 1 - A Random Quote Generator
 
 
 /*** 
-  Create the array of quote objects and name it `quotes`.
-  Add at least five quote objects to the `quotes` array.
-  Give each quote object a `quote` and `source` property.
-  Add the `citation` property to at least one object in the array.
-  Add the `year` property to at least one object in the array.
-  Use console.log() to log your array of quotes to the console.
+In this section an array is created with quote objects and 3 properties: quote, source and tags
 ***/
 var quotes = [
   {
     quote: "God helps those that help themselves",
-    source: "Benjamin Franklin."
+    source: "Benjamin Franklin.",
+    tags: "Inspirational"
   },
   {
     quote: "I came, I saw, I conquered.",
-    source: "Julius Caesar."
+    source: "Julius Caesar.",
+    tags: "Business"
   },
   {
     quote: "The journey of a thousand miles begins with one step.",
-    source: "Lao Tzu."
+    source: "Lao Tzu.",
+    tags: "Business"
   },
   {
     quote: "The only limit to our realization of tomorrow will be our doubts of today.",
-    source: "Franklin D. Roosevelt."
+    source: "Franklin D. Roosevelt.",
+    tags: "Self Help"
   },
   {
     quote: "Living an experience, a particular fate, is accepting it fully.",
-    source: "Albert Camus."
+    source: "Albert Camus.",
+    tags: "Inspirational"
   }
 ];
-
+ // In this part a new property called citation is added and its value to the forth element of the array
 quotes[4].citation = "'From the absurd to Revolt' book";
+// In this part a new property called year is added and its value to the third element of the array
 quotes[3].year = 1945;
 console.log(quotes);
 
+// An array of colors is created to change the body background color when a new quote is generated.
+var colorArray = ["#3A1F32", "#2F122C", "#DBB27F", "#C26E57", "#516986"];
 
 
 /***
-  Create the `getRandomQuote` function to:
-   - Create a variable to store a random number 
-   - Cse the random number to `return` a random quote object from the `quotes` array.
+  2 functions are created: getRandomQuote to get a random quote from the quoteArray and
+  getRandomColor to get a random color from the colorArray
 ***/
 
 function getRandomQuote(){
-  var randomNumber = Math.floor(Math.random() * quotes.length)
+  var randomNumber = Math.floor(Math.random() * quotes.length);
   return quotes[randomNumber];
 };
 
-
+function getRandomColor(){
+  var randomColor = Math.floor(Math.random() * colorArray.length);
+  return colorArray[randomColor];
+};
 /***
   Create the `printQuote` function to: 
    - Call the `getRandomQuote` function and assign it to a variable.
@@ -79,8 +84,15 @@ function printQuote(){
   if(randomObject.hasOwnProperty("year")){
     stringHTML += '<span class="year">' + randomObject.year + '</span>';
   }
+  if(randomObject.hasOwnProperty("tags")){
+    stringHTML += '<span class="tags"> Tags: ' + randomObject.tags + '</span>';
+  }
   stringHTML += '</p>';
   document.getElementById('quote-box').innerHTML = stringHTML;
+  var selectedColor = getRandomColor();
+  console.log(selectedColor);
+  document.body.style.backgroundColor = selectedColor;
+  document.getElementById("loadQuote").style.backgroundColor = selectedColor;
 };
 console.log(printQuote());
 
@@ -92,6 +104,6 @@ console.log(printQuote());
 ***/
 
 document.getElementById('loadQuote').addEventListener("click", printQuote, false);
-
+setInterval(printQuote, 25000);
 
 // Remember to delete the comments that came with this file, and replace them with your own code comments.
