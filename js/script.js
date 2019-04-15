@@ -62,10 +62,13 @@ function getRandomColor(){
 };
 
 function printQuote(){
+  // In this part a new random quote is requested and stored in randomObject.
   var randomObject = getRandomQuote();
+  // The html is created to being rendered in index.html 
   var stringHTML = "";
   stringHTML += '<p class="quote">' + randomObject.quote + '</p>';
   stringHTML += '<p class="source">' + randomObject.source;
+  // In this part we check if the object has citation, year or tags properties.
   if(randomObject.hasOwnProperty("citation")){
     stringHTML += '<span class="citation">' + randomObject.citation + '</span>';
   }
@@ -76,7 +79,9 @@ function printQuote(){
     stringHTML += '<span class="tags"> Tags: ' + randomObject.tags + '</span>';
   }
   stringHTML += '</p>';
+  // The final stringHTML is rendered in the view.
   document.getElementById('quote-box').innerHTML = stringHTML;
+  // In this part the color of the background is changed.
   var selectedColor = getRandomColor();
   console.log(selectedColor);
   document.body.style.backgroundColor = selectedColor;
