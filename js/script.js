@@ -71,17 +71,18 @@ function getRandomQuote(){
 function printQuote(){
   var randomObject = getRandomQuote();
   var stringHTML = "";
-  stringHTML = '<p class="quote">' + randomObject.quote + '</p>';
-  stringHTML = '<p class="source">' + randomObject.source;
+  stringHTML += '<p class="quote">' + randomObject.quote + '</p>';
+  stringHTML += '<p class="source">' + randomObject.source;
   if(randomObject.hasOwnProperty("citation")){
-    stringHTML = '<span class="citation">' + randomObject.citation + '</span>';
+    stringHTML += '<span class="citation">' + randomObject.citation + '</span>';
   }
   if(randomObject.hasOwnProperty("year")){
-    stringHTML = '<span class="year">' + randomObject.year + '</span>';
+    stringHTML += '<span class="year">' + randomObject.year + '</span>';
   }
-  stringHTML = '</p>';
+  stringHTML += '</p>';
   document.getElementById('quote-box').innerHTML = stringHTML;
 };
+console.log(printQuote());
 
 /***
   When the "Show another quote" button is clicked, the event listener 
